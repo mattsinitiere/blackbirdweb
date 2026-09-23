@@ -24,8 +24,10 @@ Upload the **contents of `dist/`** to the root of a static web host. No build st
 - `dist/tv.js`: light/dark TV preview and pause/resume animation controls; respects reduced motion and pauses when hidden or offscreen.
 - `dist/dot-grid.js`: interactive background dot field.
 - `dist/privacy.html`, `dist/terms.html`: draft legal pages retained for owner review.
-- `dist/assets/`: supplied Blackbird logos, locally served Figtree fonts and license, and the original dark TV screenshot.
+- `dist/assets/`: supplied Blackbird logos, locally served Figtree fonts (WOFF2) and license.
+- `dist/robots.txt`: allows crawling of the homepage; keeps the draft legal pages out of search.
 - `dist/favicon.svg`: Blackbird favicon.
+- `brand/`: source logo SVGs in every supplied variant (black, color, white; icon, word, lockup). Not served by the site.
 
 ## App and Developer links
 
@@ -45,6 +47,10 @@ The themeable TV preview is HTML/CSS with an SVG dartboard and the example Matt/
 4. Changed the caption to “BLACKBIRD TV”.
 5. Replaced the three setup cards with a connected animated flow, including pause/resume, mobile vertical layout, and reduced-motion support.
 6. Added Developer to every page's footer.
+
+## Before launch
+
+Once the site has a production domain, add a `<link rel="canonical">` to each page and a `sitemap.xml` listing `/`, then reference it from `robots.txt`. The Privacy Policy and Terms of Use are still drafts and need a contact, an effective date, and an account deletion process before they go live.
 
 ## Assets and policies
 
