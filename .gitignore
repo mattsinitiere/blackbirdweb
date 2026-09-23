@@ -1,0 +1,6 @@
+.DS_Store
+__MACOSX/
+Thumbs.db
+node_modules/
+.vercel/
+*.log
