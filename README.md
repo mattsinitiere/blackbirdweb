@@ -1,4 +1,4 @@
-# Blackbird product website
+# Blackbird Website
 
 Complete source for the Blackbird marketing website. This is a buildless static website: the files in `dist/` are both the editable source and the deployable site.
 
