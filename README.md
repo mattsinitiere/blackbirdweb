@@ -14,7 +14,11 @@ Open http://localhost:8000. Serve over HTTP instead of opening the HTML files di
 
 ## Deploy
 
-Upload the **contents of `dist/`** to the root of a static web host. No build step, packages, environment variables, or API keys are required. Preserve the directory structure. The Pages `/`, `/privacy.html`, and `/terms.html` are standalone HTML pages.
+The site is hosted on Vercel. `vercel.json` at the repo root tells Vercel to serve `dist/` as the site, strips `.html` from URLs (`/privacy.html` redirects to `/privacy`), and sets caching and security headers. Pushing to the connected branch deploys automatically; no build step, packages, environment variables, or API keys are required.
+
+The Content-Security-Policy in `vercel.json` only allows scripts, styles, fonts, and images served from this site. If you add an inline `<script>` or `style=""` attribute, an analytics tag, or a third-party embed, the policy has to be updated to allow it or the browser will block it.
+
+Any other static host works too: upload the **contents of `dist/`** to the domain root, keeping the directory structure. Asset URLs start at `/`, so the site must be served from the root of a domain, not a subpath.
 
 ## Files
 
@@ -26,6 +30,7 @@ Upload the **contents of `dist/`** to the root of a static web host. No build st
 - `dist/privacy.html`, `dist/terms.html`: draft legal pages retained for owner review.
 - `dist/assets/`: supplied Blackbird logos, locally served Figtree fonts (WOFF2) and license.
 - `dist/robots.txt`: allows crawling of the homepage; keeps the draft legal pages out of search.
+- `vercel.json`: Vercel output directory, clean URLs, cache and security headers.
 - `dist/favicon.svg`: Blackbird favicon.
 - `brand/`: source logo SVGs in every supplied variant (black, color, white; icon, word, lockup). Not served by the site.
 
@@ -50,7 +55,7 @@ The themeable TV preview is HTML/CSS with an SVG dartboard and the example Matt/
 
 ## Before launch
 
-Once the site has a production domain, add a `<link rel="canonical">` to each page and a `sitemap.xml` listing `/`, then reference it from `robots.txt`. The Privacy Policy and Terms of Use are still drafts and need a contact, an effective date, and an account deletion process before they go live.
+Once the site has a production domain, add a `<link rel="canonical">` to each page and a `sitemap.xml` listing `/`, then reference it from `robots.txt`. In the Vercel project, Deployment Protection is currently set to Vercel Authentication for all non-custom domains, so the `*.vercel.app` URLs return 403 to the public until that is turned off or a custom domain is attached. The Privacy Policy and Terms of Use are still drafts and need a contact, an effective date, and an account deletion process before they go live.
 
 ## Assets and policies
 
